@@ -46,8 +46,16 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 600;
-            color: var(--dark);
+            color: #5D4E37;
             letter-spacing: 2px;
+        }
+
+        .logo-center {
+            height: 60px;
+            width: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .cart-btn {
@@ -598,6 +606,7 @@
     <header>
         <nav>
             <div class="logo">COCOACRAFT</div>
+            <img src="cocoa craft logo bovenin in het midden.jpg" alt="CocoaCraft Logo" class="logo-center">
             <button class="cart-btn" onclick="openCart()">
                 Winkelwagen
                 <span class="cart-count" id="cartCount">0</span>
@@ -798,13 +807,13 @@
                 <a href="cocoacraft-over-ons.html">Over Ons</a>
             </div>
             <p style="margin-top: 1.5rem; font-size: 1rem;">
-                <strong>Contact:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
+                <strong>Contact:</strong> <a href="/cdn-cgi/l/email-protection#0f6c606c606e6c7d6e697b216c604f607a7b63606064216c6062" style="color: var(--gold); text-decoration: none;"><span class="__cf_email__" data-cfemail="3e5d515d515f5d4c5f584a105d517e514b4a52515155105d5153">[email&#160;protected]</span></a>
             </p>
             <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const products = [
             { id: 1, name: 'Fusion Eid Dessert Box', price: 54.95, image: 'eid-product-1.png' },
             { id: 2, name: 'Golden Fusion Collection', price: 64.95, image: 'eid-product-2.png' },
@@ -1002,13 +1011,3 @@
         function setMinDeliveryDate() {
             const dateInput = document.getElementById('deliveryDate');
             const today = new Date();
-            today.setDate(today.getDate() + 7);
-            const minDate = today.toISOString().split('T')[0];
-            dateInput.setAttribute('min', minDate);
-        }
-
-        setMinDeliveryDate();
-        updateCartCount();
-    </script>
-</body>
-</html>
