@@ -118,7 +118,7 @@
     </header>
 
     <div class="container">
-        <a href="cocoacraft-eid.html" class="back-link">← Terug</a>
+        <a href="index.html" class="back-link">← Terug</a>
         
         <h1>Leveringsvoorwaarden</h1>
 
@@ -154,9 +154,4 @@
 
         <div class="contact-box">
             <h3>Vragen?</h3>
-            <p><strong>Email:</strong> info@cocoacraft.nl</p>
-            <p><strong>Telefoon:</strong> 06-12345678</p>
-        </div>
-    </div>
-</body>
-</html>
+            <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc2c5cdc4ebc8c4c8c4cac8d9cacddf85c5c7">[email&#1
