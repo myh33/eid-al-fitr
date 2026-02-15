@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Ons - CocoaCraft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A961;
+            --dark: #2C2416;
+            --white: #FFFFFF;
+            --cream: #FAF7F2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--dark);
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .highlight {
+            background: rgba(201, 169, 97, 0.1);
+            padding: 2rem;
+            border-left: 4px solid var(--gold);
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .cta-link {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .cta-link:hover {
+            background: var(--dark);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">COCOACRAFT</div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Terug naar Collectie</a>
+        
+        <h1>Over CocoaCraft</h1>
+
+        <div class="content-section">
+            <h2>Eid Al-Fitr Collection</h2>
+            <p>
+                Welkom bij de CocoaCraft Eid Al-Fitr Collectie. Wij zijn een onderdeel van <strong>CocoaCraft</strong>, 
+                het premium merk voor handgemaakte chocolade fusion desserts.
+            </p>
+            <p>
+                Deze speciale collectie combineert traditionele Midden-Oosterse smaken met moderne chocolade technieken. 
+                Elk dessert wordt met de grootste zorg bereid, speciaal voor uw Eid viering.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Onze Specialiteit</h2>
+            <p>
+                CocoaCraft is gespecialiseerd in <strong>premium chocolade fusion desserts</strong>. 
+                Wij brengen verschillende culinaire tradities samen en creëren unieke smaken die je nergens anders vindt.
+            </p>
+            <div class="highlight">
+                <p style="margin: 0; font-weight: 500;">
+                    "Waar Oost en West samenkomen in pure chocolade excellentie"
+                </p>
+            </div>
+            <p>
+                Onze producten worden vers op bestelling gemaakt door ervaren ambachtslieden, 
+                met alleen de beste ingrediënten. Elk dessert is een kunstwerk op zich.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Meer Collecties</h2>
+            <p>
+                Naast onze Eid Al-Fitr collectie biedt CocoaCraft het hele jaar door unieke chocolade creaties 
+                voor verschillende gelegenheden en feestdagen.
+            </p>
+            <p>
+                Ontdek ons volledige assortiment en leer meer over onze visie, ambacht en verhaal:
+            </p>
+            <a href="https://www.cocoacraft.eu" class="cta-link" target="_blank">
+                Bezoek CocoaCraft.eu →
+            </a>
+        </div>
+
+        <div class="content-section">
+            <h2>Contact</h2>
+            <p>
+                Vragen over onze Eid collectie of andere CocoaCraft producten? 
+                Neem gerust contact met ons op.
+            </p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
+    </footer>
+</body>
+</html>
