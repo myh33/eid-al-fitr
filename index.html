@@ -157,7 +157,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #FAFAFA;
         }
 
         .product-info {
@@ -345,6 +346,29 @@
             padding: 2rem;
             border-top: 1px solid rgba(201, 169, 97, 0.2);
             background: #FAFAFA;
+        }
+
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .cart-shipping {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            color: #666;
+        }
+
+        .cart-shipping.free {
+            color: var(--emerald);
+            font-weight: 600;
         }
 
         .cart-total {
@@ -672,6 +696,14 @@
             </div>
         </div>
         <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="cart-subtotal">
+                <span>Subtotaal</span>
+                <span id="cartSubtotal">€0,00</span>
+            </div>
+            <div class="cart-shipping" id="shippingCost">
+                <span>Verzendkosten</span>
+                <span id="shippingAmount">€14,95</span>
+            </div>
             <div class="cart-total">
                 <span>Totaal</span>
                 <span id="cartTotal">€0,00</span>
@@ -701,6 +733,11 @@
                     <div class="form-group">
                         <label class="form-label">Telefoon</label>
                         <input type="tel" class="form-input" id="phone" placeholder="+31 6 12345678">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gewenste Leverdatum</label>
+                        <input type="date" class="form-input" id="deliveryDate" min="">
+                        <small style="color: #999; font-size: 0.85rem; display: block; margin-top: 0.5rem;">Minimaal 1 week van tevoren bestellen</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Adres</label>
@@ -758,9 +795,11 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="cocoacraft-voorwaarden.html">Leveringsvoorwaarden</a>
-                <a href="#">Contact</a>
-                <a href="#">Over Ons</a>
+                <a href="cocoacraft-over-ons.html">Over Ons</a>
             </div>
+            <p style="margin-top: 1.5rem; font-size: 1rem;">
+                <strong>Contact:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
+            </p>
             <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
         </div>
     </footer>
@@ -815,7 +854,23 @@
                 </div>
             `).join('');
 
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shippingCost = subtotal >= 100 ? 0 : 14.95;
+            const total = subtotal + shippingCost;
+            
+            document.getElementById('cartSubtotal').textContent = `€${subtotal.toFixed(2)}`;
+            
+            const shippingElement = document.getElementById('shippingCost');
+            const shippingAmountElement = document.getElementById('shippingAmount');
+            
+            if (shippingCost === 0) {
+                shippingElement.classList.add('free');
+                shippingAmountElement.textContent = 'GRATIS';
+            } else {
+                shippingElement.classList.remove('free');
+                shippingAmountElement.textContent = `€${shippingCost.toFixed(2)}`;
+            }
+            
             document.getElementById('cartTotal').textContent = `€${total.toFixed(2)}`;
             summary.style.display = 'block';
         }
@@ -844,17 +899,30 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
+            const deliveryDate = document.getElementById('deliveryDate').value;
             const address = document.getElementById('address').value;
             const zipcode = document.getElementById('zipcode').value;
             const city = document.getElementById('city').value;
 
-            if (!name || !email || !phone || !address || !zipcode || !city) {
-                alert('Vul alle velden in!');
+            if (!name || !email || !phone || !deliveryDate || !address || !zipcode || !city) {
+                alert('Vul alle velden in, inclusief gewenste leverdatum!');
+                return;
+            }
+            
+            // Check if delivery date is at least 7 days from now
+            const selectedDate = new Date(deliveryDate);
+            const minDate = new Date();
+            minDate.setDate(minDate.getDate() + 7);
+            
+            if (selectedDate < minDate) {
+                alert('Leverdatum moet minimaal 1 week van tevoren zijn!');
                 return;
             }
 
             const payment = document.querySelector('input[name="payment"]:checked').value;
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shippingCost = subtotal >= 100 ? 0 : 14.95;
+            const total = subtotal + shippingCost;
             const orderNumber = 'EID-' + Date.now();
             
             // Prepare order data
@@ -864,10 +932,13 @@
                 name: name,
                 email: email,
                 phone: phone,
+                deliveryDate: deliveryDate,
                 address: address + ', ' + zipcode + ' ' + city,
                 payment: payment.toUpperCase(),
                 items: cart.map(item => `${item.name} (€${item.price.toFixed(2)})`).join('\n'),
                 itemsList: cart.map(item => item.name).join(', '),
+                subtotal: '€' + subtotal.toFixed(2),
+                shipping: shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2),
                 total: '€' + total.toFixed(2)
             };
 
@@ -886,9 +957,12 @@
                     name: orderData.name,
                     email: orderData.email,
                     phone: orderData.phone,
+                    deliveryDate: orderData.deliveryDate,
                     address: orderData.address,
                     payment: orderData.payment,
                     items: orderData.itemsList,
+                    subtotal: orderData.subtotal,
+                    shipping: orderData.shipping,
                     total: orderData.total
                 })
             }).catch(error => console.log('Google Sheets:', error));
@@ -896,10 +970,12 @@
             // Show success message
             alert(`✅ BESTELLING GEPLAATST!\n\n` +
                   `Bestelnummer: ${orderData.orderNumber}\n` +
-                  `Totaal: €${total.toFixed(2)}\n` +
+                  `Subtotaal: ${orderData.subtotal}\n` +
+                  `Verzendkosten: ${orderData.shipping}\n` +
+                  `Totaal: ${orderData.total}\n\n` +
+                  `Leverdatum: ${deliveryDate}\n` +
                   `Betaalmethode: ${payment.toUpperCase()}\n\n` +
                   `Je ontvangt een bevestiging op:\n${email}\n\n` +
-                  `Levering binnen 7-10 werkdagen\n\n` +
                   `Eid Mubarak! 🌙`);
 
             // Clear cart
@@ -912,6 +988,7 @@
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('phone').value = '';
+            document.getElementById('deliveryDate').value = '';
             document.getElementById('address').value = '';
             document.getElementById('zipcode').value = '';
             document.getElementById('city').value = '';
@@ -921,6 +998,16 @@
             if (e.target === this) closeCheckout();
         });
 
+        // Set minimum delivery date to 7 days from now
+        function setMinDeliveryDate() {
+            const dateInput = document.getElementById('deliveryDate');
+            const today = new Date();
+            today.setDate(today.getDate() + 7);
+            const minDate = today.toISOString().split('T')[0];
+            dateInput.setAttribute('min', minDate);
+        }
+
+        setMinDeliveryDate();
         updateCartCount();
     </script>
 </body>
