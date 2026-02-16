@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leveringsvoorwaarden - CocoaCraft</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #D4AF37;
-            --dark: #1a1a1a;
-            --white: #ffffff;
-            --cream: #FFF8F0;
+            --gold: #C9A961;
+            --dark: #2C2416;
+            --white: #FFFFFF;
+            --cream: #FAF7F2;
             --emerald: #059669;
         }
 
@@ -29,17 +29,36 @@
 
         header {
             background: var(--white);
-            border-bottom: 2px solid var(--gold);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
             color: #5D4E37;
-            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .logo-center {
+            height: 108px;
+            width: 108px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .container {
@@ -48,8 +67,20 @@
             padding: 0 2rem;
         }
 
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
         h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
             margin-bottom: 2rem;
             color: var(--dark);
@@ -57,7 +88,7 @@
         }
 
         h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             margin: 2rem 0 1rem;
             color: var(--gold);
@@ -94,7 +125,7 @@
         }
 
         .contact-box h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             margin-bottom: 1rem;
             color: white;
@@ -108,16 +139,26 @@
             margin-bottom: 1.5rem;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
         }
 
-        .back-link:hover {
-            text-decoration: underline;
+        .footer-logo {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
@@ -127,7 +168,11 @@
 </head>
 <body>
     <header>
-        <div class="logo">COCOACRAFT</div>
+        <nav>
+            <div class="logo">COCOACRAFT</div>
+            <img src="cocoa craft logo bovenin in het midden.jpg" alt="CocoaCraft Logo" class="logo-center">
+            <div style="width: 150px;"></div>
+        </nav>
     </header>
 
     <div class="container">
@@ -181,5 +226,10 @@
             <p><strong>Email:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: white; text-decoration: underline;">cocoacraft.co@outlook.com</a></p>
         </div>
     </div>
+
+    <footer>
+        <img src="cocoa craft logo bovenin in het midden.jpg" alt="CocoaCraft Logo" class="footer-logo">
+        <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
+    </footer>
 </body>
 </html>
