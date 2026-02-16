@@ -40,6 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -65,7 +66,6 @@
             color: var(--white);
             border: none;
             padding: 0.9rem 2rem;
-            border-radius: 0;
             font-weight: 600;
             cursor: pointer;
             font-size: 0.9rem;
@@ -115,19 +115,8 @@
             font-size: 1.1rem;
             color: #6B6B6B;
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
             font-weight: 300;
-        }
-
-        .charity-badge {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--gold);
-            color: var(--white);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
         }
 
         /* Products */
@@ -157,7 +146,7 @@
             position: relative;
             width: 100%;
             padding-top: 75%;
-            background: #F5F5F5;
+            background: #FAFAFA;
             overflow: hidden;
         }
 
@@ -377,7 +366,7 @@
         }
 
         .cart-shipping.free {
-            color: var(--emerald);
+            color: #059669;
             font-weight: 600;
         }
 
@@ -735,33 +724,33 @@
                     <h3>Verzendadres</h3>
                     <div class="form-group">
                         <label class="form-label">Volledige Naam</label>
-                        <input type="text" class="form-input" id="name" placeholder="Voor- en achternaam">
+                        <input type="text" class="form-input" id="name" placeholder="Voor- en achternaam" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" id="email" placeholder="jouw@email.com">
+                        <input type="email" class="form-input" id="email" placeholder="jouw@email.com" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Telefoon</label>
-                        <input type="tel" class="form-input" id="phone" placeholder="+31 6 12345678">
+                        <input type="tel" class="form-input" id="phone" placeholder="+31 6 12345678" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Gewenste Leverdatum</label>
-                        <input type="date" class="form-input" id="deliveryDate" min="">
+                        <input type="date" class="form-input" id="deliveryDate" min="" required>
                         <small style="color: #999; font-size: 0.85rem; display: block; margin-top: 0.5rem;">Minimaal 1 week van tevoren bestellen</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Adres</label>
-                        <input type="text" class="form-input" id="address" placeholder="Straat en huisnummer">
+                        <input type="text" class="form-input" id="address" placeholder="Straat en huisnummer" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Postcode</label>
-                            <input type="text" class="form-input" id="zipcode" placeholder="1234 AB">
+                            <input type="text" class="form-input" id="zipcode" placeholder="1234 AB" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Plaats</label>
-                            <input type="text" class="form-input" id="city" placeholder="Amsterdam">
+                            <input type="text" class="form-input" id="city" placeholder="Amsterdam" required>
                         </div>
                     </div>
                 </div>
@@ -809,13 +798,14 @@
                 <a href="cocoacraft-over-ons.html">Over Ons</a>
             </div>
             <p style="margin-top: 1.5rem; font-size: 1rem;">
-                <strong>Contact:</strong> <a href="/cdn-cgi/l/email-protection#0f6c606c606e6c7d6e697b216c604f607a7b63606064216c6062" style="color: var(--gold); text-decoration: none;"><span class="__cf_email__" data-cfemail="3e5d515d515f5d4c5f584a105d517e514b4a52515155105d5153">[email&#160;protected]</span></a>
+                <strong>Contact:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
             </p>
             <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Product data
         const products = [
             { id: 1, name: 'Fusion Eid Dessert Box', price: 54.95, image: 'eid-product-1.png' },
             { id: 2, name: 'Golden Fusion Collection', price: 64.95, image: 'eid-product-2.png' },
@@ -823,6 +813,7 @@
             { id: 4, name: 'Seoul Halal Fusion Box', price: 69.95, image: 'eid-product-4.png' }
         ];
 
+        // Cart management
         let cart = JSON.parse(localStorage.getItem('cocoaCraftEid')) || [];
 
         function updateCartCount() {
@@ -831,10 +822,13 @@
 
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
-            cart.push(product);
-            localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
-            updateCartCount();
-            renderCart();
+            if (product) {
+                cart.push(product);
+                localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
+                updateCartCount();
+                renderCart();
+                console.log('Product added:', product);
+            }
         }
 
         function removeFromCart(index) {
@@ -935,55 +929,13 @@
             const shippingCost = subtotal >= 100 ? 0 : 14.95;
             const total = subtotal + shippingCost;
             const orderNumber = 'EID-' + Date.now();
-            
-            // Prepare order data
-            const orderData = {
-                timestamp: new Date().toLocaleString('nl-NL'),
-                orderNumber: orderNumber,
-                name: name,
-                email: email,
-                phone: phone,
-                deliveryDate: deliveryDate,
-                address: address + ', ' + zipcode + ' ' + city,
-                payment: payment.toUpperCase(),
-                items: cart.map(item => `${item.name} (€${item.price.toFixed(2)})`).join('\n'),
-                itemsList: cart.map(item => item.name).join(', '),
-                subtotal: '€' + subtotal.toFixed(2),
-                shipping: shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2),
-                total: '€' + total.toFixed(2)
-            };
-
-            // Send to Google Sheets (YOU NEED TO SET UP YOUR SCRIPT URL)
-            const googleScriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
-            
-            fetch(googleScriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    timestamp: orderData.timestamp,
-                    orderNumber: orderData.orderNumber,
-                    name: orderData.name,
-                    email: orderData.email,
-                    phone: orderData.phone,
-                    deliveryDate: orderData.deliveryDate,
-                    address: orderData.address,
-                    payment: orderData.payment,
-                    items: orderData.itemsList,
-                    subtotal: orderData.subtotal,
-                    shipping: orderData.shipping,
-                    total: orderData.total
-                })
-            }).catch(error => console.log('Google Sheets:', error));
 
             // Show success message
             alert(`✅ BESTELLING GEPLAATST!\n\n` +
-                  `Bestelnummer: ${orderData.orderNumber}\n` +
-                  `Subtotaal: ${orderData.subtotal}\n` +
-                  `Verzendkosten: ${orderData.shipping}\n` +
-                  `Totaal: ${orderData.total}\n\n` +
+                  `Bestelnummer: ${orderNumber}\n` +
+                  `Subtotaal: €${subtotal.toFixed(2)}\n` +
+                  `Verzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\n` +
+                  `Totaal: €${total.toFixed(2)}\n\n` +
                   `Leverdatum: ${deliveryDate}\n` +
                   `Betaalmethode: ${payment.toUpperCase()}\n\n` +
                   `Je ontvangt een bevestiging op:\n${email}\n\n` +
@@ -1005,11 +957,25 @@
             document.getElementById('city').value = '';
         }
 
-        document.getElementById('checkoutModal').addEventListener('click', function(e) {
-            if (e.target === this) closeCheckout();
-        });
-
         // Set minimum delivery date to 7 days from now
         function setMinDeliveryDate() {
             const dateInput = document.getElementById('deliveryDate');
             const today = new Date();
+            today.setDate(today.getDate() + 7);
+            const minDate = today.toISOString().split('T')[0];
+            dateInput.setAttribute('min', minDate);
+        }
+
+        // Close checkout on overlay click
+        document.getElementById('checkoutModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCheckout();
+        });
+
+        // Initialize
+        setMinDeliveryDate();
+        updateCartCount();
+
+        console.log('CocoaCraft Eid site loaded - all systems ready!');
+    </script>
+</body>
+</html>
