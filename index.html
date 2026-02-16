@@ -23,7 +23,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
         header {
             background: var(--white);
             border-bottom: 1px solid rgba(201, 169, 97, 0.2);
@@ -95,7 +94,6 @@
             font-weight: 700;
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(to bottom, var(--white), var(--cream));
             padding: 6rem 2rem 4rem;
@@ -119,7 +117,6 @@
             font-weight: 300;
         }
 
-        /* Products */
         .products-section {
             max-width: 1400px;
             margin: 0 auto;
@@ -221,7 +218,6 @@
             background: var(--gold);
         }
 
-        /* Cart Sidebar */
         .cart-overlay {
             position: fixed;
             top: 0;
@@ -397,7 +393,6 @@
             background: var(--dark-gold);
         }
 
-        /* Checkout Modal */
         .checkout-modal {
             position: fixed;
             top: 0;
@@ -542,7 +537,6 @@
             background: var(--dark-gold);
         }
 
-        /* Footer */
         footer {
             background: var(--dark);
             color: var(--white);
@@ -593,7 +587,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">COCOACRAFT</div>
@@ -605,16 +598,13 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <h1 class="hero-title">Eid Al-Fitr Collection</h1>
         <p class="hero-subtitle">Handgemaakte chocolade fusion desserts voor uw Eid viering</p>
     </section>
 
-    <!-- Products -->
     <section class="products-section">
         <div class="products-grid">
-            <!-- Product 1 -->
             <div class="product-card">
                 <div class="product-image-container">
                     <img src="eid-product-1.png" alt="Fusion Eid Dessert Collection" class="product-image">
@@ -630,7 +620,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card">
                 <div class="product-image-container">
                     <img src="eid-product-2.png" alt="Premium Dessert Selection" class="product-image">
@@ -646,7 +635,6 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="product-card">
                 <div class="product-image-container">
                     <img src="eid-product-3.png" alt="Fusion Borrelplank" class="product-image">
@@ -662,7 +650,6 @@
                 </div>
             </div>
 
-            <!-- Product 4 -->
             <div class="product-card">
                 <div class="product-image-container">
                     <img src="eid-product-4.png" alt="Seoul Halal Fusion Box" class="product-image">
@@ -680,10 +667,8 @@
         </div>
     </section>
 
-    <!-- Cart Overlay -->
     <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 
-    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h2>Winkelwagen</h2>
@@ -712,7 +697,6 @@
         </div>
     </div>
 
-    <!-- Checkout Modal -->
     <div class="checkout-modal" id="checkoutModal">
         <div class="checkout-content">
             <div class="checkout-header">
@@ -724,33 +708,33 @@
                     <h3>Verzendadres</h3>
                     <div class="form-group">
                         <label class="form-label">Volledige Naam</label>
-                        <input type="text" class="form-input" id="name" placeholder="Voor- en achternaam" required>
+                        <input type="text" class="form-input" id="name" placeholder="Voor- en achternaam">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" id="email" placeholder="jouw@email.com" required>
+                        <input type="email" class="form-input" id="email" placeholder="jouw@email.com">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Telefoon</label>
-                        <input type="tel" class="form-input" id="phone" placeholder="+31 6 12345678" required>
+                        <input type="tel" class="form-input" id="phone" placeholder="+31 6 12345678">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Gewenste Leverdatum</label>
-                        <input type="date" class="form-input" id="deliveryDate" min="" required>
+                        <input type="date" class="form-input" id="deliveryDate" min="">
                         <small style="color: #999; font-size: 0.85rem; display: block; margin-top: 0.5rem;">Minimaal 1 week van tevoren bestellen</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Adres</label>
-                        <input type="text" class="form-input" id="address" placeholder="Straat en huisnummer" required>
+                        <input type="text" class="form-input" id="address" placeholder="Straat en huisnummer">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Postcode</label>
-                            <input type="text" class="form-input" id="zipcode" placeholder="1234 AB" required>
+                            <input type="text" class="form-input" id="zipcode" placeholder="1234 AB">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Plaats</label>
-                            <input type="text" class="form-input" id="city" placeholder="Amsterdam" required>
+                            <input type="text" class="form-input" id="city" placeholder="Amsterdam">
                         </div>
                     </div>
                 </div>
@@ -790,7 +774,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -798,14 +781,13 @@
                 <a href="cocoacraft-over-ons.html">Over Ons</a>
             </div>
             <p style="margin-top: 1.5rem; font-size: 1rem;">
-                <strong>Contact:</strong> <a href="/cdn-cgi/l/email-protection#5c3f333f333d3f2e3d3a28723f331c33292830333337723f3331" style="color: var(--gold); text-decoration: none;"><span class="__cf_email__" data-cfemail="e2818d818d838190838496cc818da28d97968e8d8d89cc818d8f">[email&#160;protected]</span></a>
+                <strong>Contact:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
             </p>
             <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Product data
+    <script>
         const products = [
             { id: 1, name: 'Fusion Eid Dessert Box', price: 54.95, image: 'eid-product-1.png' },
             { id: 2, name: 'Golden Fusion Collection', price: 64.95, image: 'eid-product-2.png' },
@@ -813,7 +795,6 @@
             { id: 4, name: 'Seoul Halal Fusion Box', price: 69.95, image: 'eid-product-4.png' }
         ];
 
-        // Cart management
         let cart = JSON.parse(localStorage.getItem('cocoaCraftEid')) || [];
 
         function updateCartCount() {
@@ -827,7 +808,6 @@
                 localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
                 updateCartCount();
                 renderCart();
-                console.log('Product added:', product);
             }
         }
 
@@ -910,11 +890,10 @@
             const city = document.getElementById('city').value;
 
             if (!name || !email || !phone || !deliveryDate || !address || !zipcode || !city) {
-                alert('Vul alle velden in, inclusief gewenste leverdatum!');
+                alert('Vul alle velden in!');
                 return;
             }
             
-            // Check if delivery date is at least 7 days from now
             const selectedDate = new Date(deliveryDate);
             const minDate = new Date();
             minDate.setDate(minDate.getDate() + 7);
@@ -930,24 +909,13 @@
             const total = subtotal + shippingCost;
             const orderNumber = 'EID-' + Date.now();
 
-            // Show success message
-            alert(`✅ BESTELLING GEPLAATST!\n\n` +
-                  `Bestelnummer: ${orderNumber}\n` +
-                  `Subtotaal: €${subtotal.toFixed(2)}\n` +
-                  `Verzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\n` +
-                  `Totaal: €${total.toFixed(2)}\n\n` +
-                  `Leverdatum: ${deliveryDate}\n` +
-                  `Betaalmethode: ${payment.toUpperCase()}\n\n` +
-                  `Je ontvangt een bevestiging op:\n${email}\n\n` +
-                  `Eid Mubarak! 🌙`);
+            alert(`✅ BESTELLING GEPLAATST!\n\nBestelnummer: ${orderNumber}\nSubtotaal: €${subtotal.toFixed(2)}\nVerzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\nTotaal: €${total.toFixed(2)}\n\nLeverdatum: ${deliveryDate}\nBetaalmethode: ${payment.toUpperCase()}\n\nJe ontvangt een bevestiging op:\n${email}\n\nEid Mubarak! 🌙`);
 
-            // Clear cart
             cart = [];
             localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
             updateCartCount();
             closeCheckout();
             
-            // Clear form
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('phone').value = '';
@@ -957,7 +925,6 @@
             document.getElementById('city').value = '';
         }
 
-        // Set minimum delivery date to 7 days from now
         function setMinDeliveryDate() {
             const dateInput = document.getElementById('deliveryDate');
             const today = new Date();
@@ -966,5 +933,12 @@
             dateInput.setAttribute('min', minDate);
         }
 
-        // Close checkout on overlay click
-        document.getElementById('checkoutModal').addEventListener('click', funct
+        document.getElementById('checkoutModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCheckout();
+        });
+
+        setMinDeliveryDate();
+        updateCartCount();
+    </script>
+</body>
+</html>
