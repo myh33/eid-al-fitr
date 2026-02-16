@@ -417,6 +417,7 @@
             max-width: 700px;
             max-height: 90vh;
             overflow-y: auto;
+            position: relative;
         }
 
         .checkout-header {
@@ -537,6 +538,105 @@
             background: var(--dark-gold);
         }
 
+        /* SUCCESS MODAL STYLES */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            z-index: 2001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .success-modal.active {
+            display: flex;
+        }
+
+        .success-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .success-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .success-close:hover {
+            color: var(--gold);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .success-details {
+            background: #FAFAFA;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .success-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .success-row:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--gold);
+        }
+
+        .success-button {
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .success-button:hover {
+            background: var(--dark-gold);
+        }
+
         footer {
             background: var(--dark);
             color: var(--white);
@@ -547,6 +647,15 @@
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .footer-logo {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 2rem;
+            display: block;
         }
 
         .footer-links {
@@ -774,12 +883,28 @@
         </div>
     </div>
 
+    <!-- SUCCESS MODAL -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <button class="success-close" onclick="closeSuccessModal()">×</button>
+            <div class="success-icon">✅</div>
+            <h2 class="success-title">BESTELLING GEPLAATST!</h2>
+            <div class="success-details" id="successDetails"></div>
+            <p style="margin: 1.5rem 0; color: #666;">
+                Je ontvangt een bevestiging per email.<br>
+                <strong>Eid Mubarak! 🌙</strong>
+            </p>
+            <button class="success-button" onclick="closeSuccessModal()">OK</button>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="cocoacraft-voorwaarden.html">Leveringsvoorwaarden</a>
                 <a href="cocoacraft-over-ons.html">Over Ons</a>
             </div>
+            <img src="cocoa craft logo bovenin in het midden.jpg" alt="CocoaCraft Logo" class="footer-logo">
             <p style="margin-top: 1.5rem; font-size: 1rem;">
                 <strong>Contact:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
             </p>
@@ -880,6 +1005,10 @@
             document.getElementById('checkoutModal').classList.remove('active');
         }
 
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
         function placeOrder() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -909,6 +1038,32 @@
             const total = subtotal + shippingCost;
             const orderNumber = 'EID-' + Date.now();
 
+            // Display success modal with details
+            const successDetails = document.getElementById('successDetails');
+            successDetails.innerHTML = `
+                <div class="success-row">
+                    <span>Bestelnummer:</span>
+                    <strong>${orderNumber}</strong>
+                </div>
+                <div class="success-row">
+                    <span>Subtotaal:</span>
+                    <span>€${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="success-row">
+                    <span>Verzendkosten:</span>
+                    <span>${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}</span>
+                </div>
+                <div class="success-row">
+                    <span>Totaal:</span>
+                    <strong>€${total.toFixed(2)}</strong>
+                </div>
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd; text-align: left;">
+                    <p style="margin: 0.3rem 0;"><strong>Leverdatum:</strong> ${deliveryDate}</p>
+                    <p style="margin: 0.3rem 0;"><strong>Betaalmethode:</strong> ${payment.toUpperCase()}</p>
+                </div>
+            `;
+
+            // Clear cart and form
             cart = [];
             localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
             updateCartCount();
@@ -922,8 +1077,7 @@
             document.getElementById('city').value = '';
             
             closeCheckout();
-            
-            alert(`✅ BESTELLING GEPLAATST!\n\nBestelnummer: ${orderNumber}\nSubtotaal: €${subtotal.toFixed(2)}\nVerzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\nTotaal: €${total.toFixed(2)}\n\nLeverdatum: ${deliveryDate}\nBetaalmethode: ${payment.toUpperCase()}\n\nJe ontvangt een bevestiging op:\n${email}\n\nEid Mubarak! 🌙`);
+            document.getElementById('successModal').classList.add('active');
         }
 
         function setMinDeliveryDate() {
@@ -936,6 +1090,10 @@
 
         document.getElementById('checkoutModal').addEventListener('click', function(e) {
             if (e.target === this) closeCheckout();
+        });
+
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) closeSuccessModal();
         });
 
         setMinDeliveryDate();
