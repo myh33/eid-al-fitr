@@ -781,13 +781,13 @@
                 <a href="cocoacraft-over-ons.html">Over Ons</a>
             </div>
             <p style="margin-top: 1.5rem; font-size: 1rem;">
-                <strong>Contact:</strong> <a href="mailto:cocoacraft.co@outlook.com" style="color: var(--gold); text-decoration: none;">cocoacraft.co@outlook.com</a>
+                <strong>Contact:</strong> <a href="/cdn-cgi/l/email-protection#4f2c202c202e2c3d2e293b612c200f203a3b23202024612c2022" style="color: var(--gold); text-decoration: none;"><span class="__cf_email__" data-cfemail="ddbeb2beb2bcbeafbcbba9f3beb29db2a8a9b1b2b2b6f3beb2b0">[email&#160;protected]</span></a>
             </p>
             <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const products = [
             { id: 1, name: 'Fusion Eid Dessert Box', price: 54.95, image: 'eid-product-1.png' },
             { id: 2, name: 'Golden Fusion Collection', price: 64.95, image: 'eid-product-2.png' },
@@ -909,13 +909,12 @@
             const total = subtotal + shippingCost;
             const orderNumber = 'EID-' + Date.now();
 
-            alert(`✅ BESTELLING GEPLAATST!\n\nBestelnummer: ${orderNumber}\nSubtotaal: €${subtotal.toFixed(2)}\nVerzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\nTotaal: €${total.toFixed(2)}\n\nLeverdatum: ${deliveryDate}\nBetaalmethode: ${payment.toUpperCase()}\n\nJe ontvangt een bevestiging op:\n${email}\n\nEid Mubarak! 🌙`);
-
+            // Clear cart first
             cart = [];
             localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
             updateCartCount();
-            closeCheckout();
             
+            // Clear form
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('phone').value = '';
@@ -923,6 +922,12 @@
             document.getElementById('address').value = '';
             document.getElementById('zipcode').value = '';
             document.getElementById('city').value = '';
+            
+            // Close modal BEFORE showing alert
+            closeCheckout();
+            
+            // Show confirmation
+            alert(`✅ BESTELLING GEPLAATST!\n\nBestelnummer: ${orderNumber}\nSubtotaal: €${subtotal.toFixed(2)}\nVerzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\nTotaal: €${total.toFixed(2)}\n\nLeverdatum: ${deliveryDate}\nBetaalmethode: ${payment.toUpperCase()}\n\nJe ontvangt een bevestiging op:\n${email}\n\nEid Mubarak! 🌙`);
         }
 
         function setMinDeliveryDate() {
@@ -930,15 +935,4 @@
             const today = new Date();
             today.setDate(today.getDate() + 7);
             const minDate = today.toISOString().split('T')[0];
-            dateInput.setAttribute('min', minDate);
-        }
-
-        document.getElementById('checkoutModal').addEventListener('click', function(e) {
-            if (e.target === this) closeCheckout();
-        });
-
-        setMinDeliveryDate();
-        updateCartCount();
-    </script>
-</body>
-</html>
+            dateInput.setAttribute('min', minDat
