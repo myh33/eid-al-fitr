@@ -3,968 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eid Al-Fitr Collection - CocoaCraft</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Leveringsvoorwaarden - CocoaCraft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #C9A961;
-            --dark-gold: #A88B4F;
-            --cream: #FAF7F2;
-            --dark: #2C2416;
-            --white: #FFFFFF;
+            --gold: #D4AF37;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+            --cream: #FFF8F0;
+            --emerald: #059669;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--cream);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* Header */
         header {
             background: var(--white);
-            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
+            border-bottom: 2px solid var(--gold);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            position: relative;
+            justify-content: space-between;
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
             color: #5D4E37;
-            letter-spacing: 2px;
         }
 
         .logo-center {
-            height: 108px;
-            width: 108px;
+            height: 80px;
+            width: 80px;
             border-radius: 50%;
             object-fit: cover;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
-        .cart-btn {
-            background: var(--gold);
-            color: var(--white);
-            border: none;
-            padding: 0.9rem 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            transition: all 0.3s;
+        .container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
-        .cart-btn:hover {
-            background: var(--dark-gold);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--dark);
-            color: var(--white);
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(to bottom, var(--white), var(--cream));
-            padding: 6rem 2rem 4rem;
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
             text-align: center;
         }
 
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4.5rem;
-            font-weight: 300;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            letter-spacing: 3px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #6B6B6B;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Products */
-        .products-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4rem 3rem;
-        }
-
-        .product-card {
-            background: var(--white);
-            transition: all 0.4s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .product-image-container {
-            position: relative;
-            width: 100%;
-            padding-top: 75%;
-            background: #FAFAFA;
-            overflow: hidden;
-        }
-
-        .product-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #FAFAFA;
-        }
-
-        .product-info {
-            padding: 2.5rem;
-        }
-
-        .product-category {
-            font-size: 0.75rem;
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
             color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-bottom: 1rem;
         }
 
-        .product-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .product-description {
-            color: #6B6B6B;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(201, 169, 97, 0.2);
-        }
-
-        .product-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .add-btn {
-            background: var(--dark);
-            color: var(--white);
-            border: none;
-            padding: 1rem 2.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .add-btn:hover {
-            background: var(--gold);
-        }
-
-        /* Cart Sidebar */
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.6);
-            z-index: 1998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .cart-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -600px;
-            width: 600px;
-            max-width: 100%;
-            height: 100vh;
-            background: var(--white);
-            z-index: 1999;
-            transition: right 0.3s;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-sidebar.active {
-            right: 0;
-        }
-
-        .cart-header {
-            padding: 2.5rem;
-            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 500;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--dark);
-            line-height: 1;
-        }
-
-        .cart-items {
-            flex: 1;
+        .section {
+            background: white;
             padding: 2rem;
-            overflow-y: auto;
+            border-radius: 15px;
+            margin-bottom: 2rem;
         }
 
-        .cart-item {
-            display: flex;
-            gap: 1.5rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+        ul {
+            margin: 1rem 0 1rem 2rem;
         }
 
-        .cart-item-image {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
+        li {
+            margin: 0.8rem 0;
         }
 
-        .cart-item-details {
-            flex: 1;
+        .contact-box {
+            background: linear-gradient(135deg, var(--emerald), var(--gold));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
         }
 
-        .cart-item-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
+        .contact-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .cart-item-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
             color: var(--gold);
-            font-weight: 500;
-        }
-
-        .remove-btn {
-            background: none;
-            border: 1px solid #ddd;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .remove-btn:hover {
-            background: var(--dark);
-            color: var(--white);
-            border-color: var(--dark);
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 5rem 2rem;
-            color: #999;
-        }
-
-        .cart-summary {
-            padding: 2rem;
-            border-top: 1px solid rgba(201, 169, 97, 0.2);
-            background: #FAFAFA;
-        }
-
-        .cart-subtotal {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #666;
-        }
-
-        .cart-shipping {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
-            color: #666;
-        }
-
-        .cart-shipping.free {
-            color: #059669;
-            font-weight: 600;
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 1.3rem;
-            background: var(--gold);
-            color: var(--white);
-            border: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s;
-        }
-
-        .checkout-btn:hover {
-            background: var(--dark-gold);
-        }
-
-        /* Checkout Modal */
-        .checkout-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .checkout-modal.active {
-            display: flex;
-        }
-
-        .checkout-content {
-            background: var(--white);
-            width: 100%;
-            max-width: 700px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .checkout-header {
-            padding: 2.5rem;
-            background: var(--dark);
-            color: var(--white);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .checkout-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 500;
-        }
-
-        .close-checkout {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 2rem;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .checkout-body {
-            padding: 3rem;
-        }
-
-        .form-section {
-            margin-bottom: 3rem;
-        }
-
-        .form-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            transition: border 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .payment-option {
-            display: none;
-        }
-
-        .payment-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.2rem;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            gap: 0.5rem;
-        }
-
-        .payment-option:checked + .payment-label {
-            border-color: var(--gold);
-            background: rgba(201, 169, 97, 0.05);
-        }
-
-        .place-order-btn {
-            width: 100%;
-            padding: 1.3rem;
-            background: var(--gold);
-            color: var(--white);
-            border: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 2rem;
-            transition: all 0.3s;
-        }
-
-        .place-order-btn:hover {
-            background: var(--dark-gold);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 4rem 2rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            margin-bottom: 2rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            font-weight: 600;
         }
 
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 1024px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
+        .back-link:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            .cart-sidebar {
-                width: 100%;
-            }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <nav>
-            <div class="logo">COCOACRAFT</div>
-            <img src="cocoa craft logo bovenin in het midden.jpg" alt="CocoaCraft Logo" class="logo-center">
-            <button class="cart-btn" onclick="openCart()">
-                Winkelwagen
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
-        </nav>
+        <div class="logo">COCOACRAFT</div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <h1 class="hero-title">Eid Al-Fitr Collection</h1>
-        <p class="hero-subtitle">Handgemaakte chocolade fusion desserts voor uw Eid viering</p>
-    </section>
+    <div class="container">
+        <a href="index.html" class="back-link">← Terug</a>
+        
+        <h1>Leveringsvoorwaarden</h1>
 
-    <!-- Products -->
-    <section class="products-section">
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="eid-product-1.png" alt="Fusion Eid Dessert Collection" class="product-image">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Signature Collection</div>
-                    <h3 class="product-name">Fusion Eid Dessert Box</h3>
-                    <p class="product-description">Luxe assortiment met Jasmin-Oranjebloesem elegance, Pandan-Kokos delight en Golden Fusion desserts. 12 stuks in premium verpakking.</p>
-                    <div class="product-footer">
-                        <div class="product-price">€54,95</div>
-                        <button class="add-btn" onclick="addToCart(1)">Toevoegen</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="eid-product-2.png" alt="Premium Dessert Selection" class="product-image">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Deluxe Selection</div>
-                    <h3 class="product-name">Golden Fusion Collection</h3>
-                    <p class="product-description">Exclusieve collectie met Turkish Delight chocolade, Saffraan mousse en Dadel truffels. 16 stuks in luxe gouden verpakking.</p>
-                    <div class="product-footer">
-                        <div class="product-price">€64,95</div>
-                        <button class="add-btn" onclick="addToCart(2)">Toevoegen</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="eid-product-3.png" alt="Fusion Borrelplank" class="product-image">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Premium Platter</div>
-                    <h3 class="product-name">Fusion Eid Borrelplank</h3>
-                    <p class="product-description">Spectaculaire presentatie met Dadel-Wafel fusion, Pandan-Kaas truffels en Spekkoek-Baklava bites. 24 stuks voor 8-10 personen.</p>
-                    <div class="product-footer">
-                        <div class="product-price">€79,95</div>
-                        <button class="add-btn" onclick="addToCart(3)">Toevoegen</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="eid-product-4.png" alt="Seoul Halal Fusion Box" class="product-image">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Limited Edition</div>
-                    <h3 class="product-name">Seoul Halal Fusion Box</h3>
-                    <p class="product-description">Unieke fusion van Koreaanse en Midden-Oosterse smaken. Mochi met dadelpasta, Matcha lokum en Sesam halva. 20 stuks.</p>
-                    <div class="product-footer">
-                        <div class="product-price">€69,95</div>
-                        <button class="add-btn" onclick="addToCart(4)">Toevoegen</button>
-                    </div>
-                </div>
-            </div>
+        <div class="section">
+            <h2>Bestellen & Levering</h2>
+            <ul>
+                <li>Bestel minimaal <strong>1 week van tevoren</strong></li>
+                <li>Bij grote bestellingen: <strong>2 weken</strong> aanbevolen</li>
+            </ul>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.2rem; color: var(--gold);">Nederland</h3>
+            <ul>
+                <li><strong>Gratis bezorging</strong> vanaf €100</li>
+                <li>Onder €100: €14,95 bezorgkosten</li>
+                <li>Gekoeld en verzekerd verzonden</li>
+            </ul>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.2rem; color: var(--gold);">Internationaal</h3>
+            <ul>
+                <li>Wij verzenden wereldwijd</li>
+                <li>Neem contact op voor verzendkosten naar jouw land</li>
+            </ul>
         </div>
-    </section>
 
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h2>Winkelwagen</h2>
-            <button class="close-cart" onclick="closeCart()">×</button>
+        <div class="section">
+            <h2>Betaling</h2>
+            <ul>
+                <li><strong>Vooruitbetaling verplicht</strong></li>
+                <li>Betalen via iDEAL, Creditcard, PayPal of Apple Pay</li>
+                <li>Je ontvangt direct een bevestiging per email</li>
+            </ul>
         </div>
-        <div class="cart-items" id="cartItems">
-            <div class="cart-empty">
-                <p style="font-size: 3rem; margin-bottom: 1rem;">🛒</p>
-                <p>Je winkelwagen is leeg</p>
-            </div>
+            <p>Wij doneren aan een goed doel.</p>
         </div>
-        <div class="cart-summary" id="cartSummary" style="display: none;">
-            <div class="cart-subtotal">
-                <span>Subtotaal</span>
-                <span id="cartSubtotal">€0,00</span>
-            </div>
-            <div class="cart-shipping" id="shippingCost">
-                <span>Verzendkosten</span>
-                <span id="shippingAmount">€14,95</span>
-            </div>
-            <div class="cart-total">
-                <span>Totaal</span>
-                <span id="cartTotal">€0,00</span>
-            </div>
-            <button class="checkout-btn" onclick="openCheckout()">Afrekenen</button>
-        </div>
-    </div>
 
-    <!-- Checkout Modal -->
-    <div class="checkout-modal" id="checkoutModal">
-        <div class="checkout-content">
-            <div class="checkout-header">
-                <h2>Afrekenen</h2>
-                <button class="close-checkout" onclick="closeCheckout()">×</button>
-            </div>
-            <div class="checkout-body">
-                <div class="form-section">
-                    <h3>Verzendadres</h3>
-                    <div class="form-group">
-                        <label class="form-label">Volledige Naam</label>
-                        <input type="text" class="form-input" id="name" placeholder="Voor- en achternaam" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-input" id="email" placeholder="jouw@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Telefoon</label>
-                        <input type="tel" class="form-input" id="phone" placeholder="+31 6 12345678" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Gewenste Leverdatum</label>
-                        <input type="date" class="form-input" id="deliveryDate" min="" required>
-                        <small style="color: #999; font-size: 0.85rem; display: block; margin-top: 0.5rem;">Minimaal 1 week van tevoren bestellen</small>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Adres</label>
-                        <input type="text" class="form-input" id="address" placeholder="Straat en huisnummer" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Postcode</label>
-                            <input type="text" class="form-input" id="zipcode" placeholder="1234 AB" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Plaats</label>
-                            <input type="text" class="form-input" id="city" placeholder="Amsterdam" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h3>Betaalmethode</h3>
-                    <div class="payment-methods">
-                        <div>
-                            <input type="radio" name="payment" value="ideal" id="ideal" class="payment-option" checked>
-                            <label for="ideal" class="payment-label">
-                                <span>🏦</span> iDEAL
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name="payment" value="card" id="card" class="payment-option">
-                            <label for="card" class="payment-label">
-                                <span>💳</span> Card
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name="payment" value="paypal" id="paypal" class="payment-option">
-                            <label for="paypal" class="payment-label">
-                                <span>🅿️</span> PayPal
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name="payment" value="applepay" id="applepay" class="payment-option">
-                            <label for="applepay" class="payment-label">
-                                <span>🍎</span> Apple Pay
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="place-order-btn" onclick="placeOrder()">Bestelling Plaatsen</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="cocoacraft-voorwaarden.html">Leveringsvoorwaarden</a>
-                <a href="cocoacraft-over-ons.html">Over Ons</a>
-            </div>
-            <p style="margin-top: 1.5rem; font-size: 1rem;">
-                <strong>Contact:</strong> <a href="/cdn-cgi/l/email-protection#5c3f333f333d3f2e3d3a28723f331c33292830333337723f3331" style="color: var(--gold); text-decoration: none;"><span class="__cf_email__" data-cfemail="e2818d818d838190838496cc818da28d97968e8d8d89cc818d8f">[email&#160;protected]</span></a>
-            </p>
-            <p class="footer-text">&copy; 2026 CocoaCraft • Handgemaakte Chocolade Fusion</p>
-        </div>
-    </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Product data
-        const products = [
-            { id: 1, name: 'Fusion Eid Dessert Box', price: 54.95, image: 'eid-product-1.png' },
-            { id: 2, name: 'Golden Fusion Collection', price: 64.95, image: 'eid-product-2.png' },
-            { id: 3, name: 'Fusion Eid Borrelplank', price: 79.95, image: 'eid-product-3.png' },
-            { id: 4, name: 'Seoul Halal Fusion Box', price: 69.95, image: 'eid-product-4.png' }
-        ];
-
-        // Cart management
-        let cart = JSON.parse(localStorage.getItem('cocoaCraftEid')) || [];
-
-        function updateCartCount() {
-            document.getElementById('cartCount').textContent = cart.length;
-        }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                cart.push(product);
-                localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
-                updateCartCount();
-                renderCart();
-                console.log('Product added:', product);
-            }
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
-            updateCartCount();
-            renderCart();
-        }
-
-        function renderCart() {
-            const container = document.getElementById('cartItems');
-            const summary = document.getElementById('cartSummary');
-            
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="cart-empty"><p style="font-size: 3rem; margin-bottom: 1rem;">🛒</p><p>Je winkelwagen is leeg</p></div>';
-                summary.style.display = 'none';
-                return;
-            }
-
-            container.innerHTML = cart.map((item, index) => `
-                <div class="cart-item">
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">€${item.price.toFixed(2)}</div>
-                    </div>
-                    <button class="remove-btn" onclick="removeFromCart(${index})">Verwijder</button>
-                </div>
-            `).join('');
-
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const shippingCost = subtotal >= 100 ? 0 : 14.95;
-            const total = subtotal + shippingCost;
-            
-            document.getElementById('cartSubtotal').textContent = `€${subtotal.toFixed(2)}`;
-            
-            const shippingElement = document.getElementById('shippingCost');
-            const shippingAmountElement = document.getElementById('shippingAmount');
-            
-            if (shippingCost === 0) {
-                shippingElement.classList.add('free');
-                shippingAmountElement.textContent = 'GRATIS';
-            } else {
-                shippingElement.classList.remove('free');
-                shippingAmountElement.textContent = `€${shippingCost.toFixed(2)}`;
-            }
-            
-            document.getElementById('cartTotal').textContent = `€${total.toFixed(2)}`;
-            summary.style.display = 'block';
-        }
-
-        function openCart() {
-            document.getElementById('cartSidebar').classList.add('active');
-            document.getElementById('cartOverlay').classList.add('active');
-            renderCart();
-        }
-
-        function closeCart() {
-            document.getElementById('cartSidebar').classList.remove('active');
-            document.getElementById('cartOverlay').classList.remove('active');
-        }
-
-        function openCheckout() {
-            closeCart();
-            document.getElementById('checkoutModal').classList.add('active');
-        }
-
-        function closeCheckout() {
-            document.getElementById('checkoutModal').classList.remove('active');
-        }
-
-        function placeOrder() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const deliveryDate = document.getElementById('deliveryDate').value;
-            const address = document.getElementById('address').value;
-            const zipcode = document.getElementById('zipcode').value;
-            const city = document.getElementById('city').value;
-
-            if (!name || !email || !phone || !deliveryDate || !address || !zipcode || !city) {
-                alert('Vul alle velden in, inclusief gewenste leverdatum!');
-                return;
-            }
-            
-            // Check if delivery date is at least 7 days from now
-            const selectedDate = new Date(deliveryDate);
-            const minDate = new Date();
-            minDate.setDate(minDate.getDate() + 7);
-            
-            if (selectedDate < minDate) {
-                alert('Leverdatum moet minimaal 1 week van tevoren zijn!');
-                return;
-            }
-
-            const payment = document.querySelector('input[name="payment"]:checked').value;
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const shippingCost = subtotal >= 100 ? 0 : 14.95;
-            const total = subtotal + shippingCost;
-            const orderNumber = 'EID-' + Date.now();
-
-            // Show success message
-            alert(`✅ BESTELLING GEPLAATST!\n\n` +
-                  `Bestelnummer: ${orderNumber}\n` +
-                  `Subtotaal: €${subtotal.toFixed(2)}\n` +
-                  `Verzendkosten: ${shippingCost === 0 ? 'GRATIS' : '€' + shippingCost.toFixed(2)}\n` +
-                  `Totaal: €${total.toFixed(2)}\n\n` +
-                  `Leverdatum: ${deliveryDate}\n` +
-                  `Betaalmethode: ${payment.toUpperCase()}\n\n` +
-                  `Je ontvangt een bevestiging op:\n${email}\n\n` +
-                  `Eid Mubarak! 🌙`);
-
-            // Clear cart
-            cart = [];
-            localStorage.setItem('cocoaCraftEid', JSON.stringify(cart));
-            updateCartCount();
-            closeCheckout();
-            
-            // Clear form
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('deliveryDate').value = '';
-            document.getElementById('address').value = '';
-            document.getElementById('zipcode').value = '';
-            document.getElementById('city').value = '';
-        }
-
-        // Set minimum delivery date to 7 days from now
-        function setMinDeliveryDate() {
-            const dateInput = document.getElementById('deliveryDate');
-            const today = new Date();
-            today.setDate(today.getDate() + 7);
-            const minDate = today.toISOString().split('T')[0];
-            dateInput.setAttribute('min', minDate);
-        }
-
-        // Close checkout on overlay click
-        document.getElementById('checkoutModal').addEventListener('click', funct
+        <div class="contact-box">
+            <img src="cocoa craft logo bovenin in het midden.jpg" alt="CocoaCraft Logo" style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem;">
+            <h3>Contact</h3>
+            <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#fb989498949a98899a9d8fd59894bb948e8f97949490d5989496" style="color: white; text-decoration: underline;"><span class="__cf_email__" d
